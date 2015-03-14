@@ -10,6 +10,12 @@ Copyright (c) 2008-2012: Joachim Faulhaber
 
 #include "portability.hpp"
 
+#ifdef BOOST_MSVC
+# pragma warning(push)
+# pragma warning(disable: 4127) // conditional expression is constant
+# pragma warning(disable: 4244) // conversion from 'const double' to 'int', possible loss of data
+#endif
+
 template 
 <
 #if (defined(__GNUC__) && (__GNUC__ < 4)) //MEMO Can be simplified, if gcc-3.4 is obsolete
@@ -1546,6 +1552,9 @@ void interval_map_move_4_discrete_types()
 #   endif // BOOST_NO_CXX11_RVALUE_REFERENCES
 }
 
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif
 
 #endif // LIBS_ICL_TEST_TEST_INTERVAL_MAP_SHARED_HPP_JOFA_081005
 
