@@ -10,6 +10,10 @@ Copyright (c) 2008-2012: Joachim Faulhaber
 
 #include "portability.hpp"
 
+#if defined(_MSC_VER)
+#pragma warning(disable: 4244) // conversion from 'const double' to 'int', possible loss of data
+#endif
+
 template 
 <
 #if (defined(__GNUC__) && (__GNUC__ < 4)) //MEMO Can be simplified, if gcc-3.4 is obsolete
